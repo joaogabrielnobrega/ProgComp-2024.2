@@ -27,10 +27,9 @@ while num <= 100000:
     #condicional para verificar progresso do programa
     if num % 1000 == 0:
         porcentagem += 1
-        print(porcentagem, "% foi concluido")
+        print(porcentagem, "% concluido")
     
     num += 1
 
 #função para mostrar o resultado
 print("Existem", palindromos, "palindromos entre 10 e 100000")
-#print(f"Existem {palindromos} palindromos entre 10 e 100000")

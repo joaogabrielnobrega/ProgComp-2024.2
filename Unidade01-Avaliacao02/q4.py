@@ -2,15 +2,6 @@
 #               20242014050013
 #
 ## Jogo termo(www.term.ooo) dueto com 7 tentativas
-#print("\033[;31;42mCaramba\033[0m")
-#31: Vermelho
-#32: Verde
-#33: Amarelo
-#34: Azul
-#35: Magenta
-#36: Ciano
-#37: Branco
-#0: Reseta para a cor padrão
 
 import random
 
@@ -57,9 +48,6 @@ tentando_palavra2 = True
 #variavel contadora de tentativas.
 tentativa = 1
 
-
-#erro: quando a primeira letra da tentativa é igual ou existe na palavra todas as outras letras ficam amarelas
-#achei o motivo, só precisei ler a linha 75 e 86, no lugar de (letra) estava (0)
 while tentativa <= 7:
     #condicional que pergunta ao usuario sua proxima tentativa se uma das palavras ainda não foi advinhada. -
     # - alem de mostrar uma mensagem e parar o laço de repetição se o usuario advinhou as duas palavras.
@@ -76,10 +64,10 @@ while tentativa <= 7:
         #- nem existe na primeira palavra e mostrar o resultado de acordo com as regras do jogo termo.
         while tentando_palavra1 and letra < len(palavra1):
             if palavra_tentativa[letra] == palavra1[letra]:
-                print(f"\033[1;37;42m{palavra_tentativa[letra]}\033[m", end="-")
+                print(f"\033[1;37;42m{palavra_tentativa[letra]}\033[m", end="")
             elif palavra_tentativa[letra] in palavra1:
-                print(f"\033[1;37;43m{palavra_tentativa[letra]}\033[m", end="-")
-            else: print(f"\033[1;37;41m{palavra_tentativa[letra]}\033[m", end="-")
+                print(f"\033[1;37;43m{palavra_tentativa[letra]}\033[m", end="")
+            else: print(palavra_tentativa[letra], end="")
             if letra == len(palavra1) - 1 and  palavra_tentativa == palavra1:
                 tentando_palavra1 = False
             letra += 1
@@ -94,10 +82,10 @@ while tentativa <= 7:
         # -nem existe na segunda palavra e mostrar o resultado de acordo com as regras do jogo termo.
         while tentando_palavra2 and letra < len(palavra2):
             if palavra_tentativa[letra] == palavra2[letra]:
-                print(f"\033[1;37;42m{palavra_tentativa[letra]}\033[m", end="-")
+                print(f"\033[1;37;42m{palavra_tentativa[letra]}\033[m", end="")
             elif palavra_tentativa[letra] in palavra2:
-                print(f"\033[1;37;43m{palavra_tentativa[letra]}\033[m", end="-")
-            else: print(f"\033[1;37;41m{palavra_tentativa[letra]}\033[m", end="-")
+                print(f"\033[1;37;43m{palavra_tentativa[letra]}\033[m", end="")
+            else: print(palavra_tentativa[letra], end="")
             if letra == len(palavra2) - 1 and palavra_tentativa == palavra2:
                 tentando_palavra2 = False
             letra += 1

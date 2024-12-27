@@ -37,15 +37,13 @@ dias_totais = 0
 #condicional que atualiza quantos dias o mês de fevereiro tem se o ano anterior for bisexto
 if ano_anterior % 4 == 0 or ano_anterior % 400 == 0 and ano_anterior % 100 != 0:
     mes2 = 29
-    #print('ok1') #usado para teste
 
 #condicionais que adicionam os dias até o fim do mes da data informada ao total de dias
 if dia_anterior <= 31 and mes_anterior == 1 or mes_anterior == 3 or mes_anterior == 5 or mes_anterior == 7 or mes_anterior == 8 or mes_anterior == 10 or mes_anterior == 12:
     dias_totais += 31 - dia_anterior
     
 if dia_anterior <= 30 and mes_anterior == 4 or mes_anterior == 6 or mes_anterior == 9 or mes_anterior == 11:
-    dias_totais += (30 - dia_anterior)
-    #print('ok2') #usado para teste
+    dias_totais += 30 - dia_anterior
 
 #condicionais que adicionam os dias dos meses restantes do ano ao total de dias 
 if dia_anterior <= 31 and mes_anterior == 1:
@@ -59,7 +57,6 @@ if dia_anterior <= 31 and mes_anterior == 3:
 
 if dia_anterior <= 30 and mes_anterior == 4:
     dias_totais += mes5 + mes6 + mes7 + mes8 + mes9 + mes10 + mes11 + mes12
-    #print('ok3') #usado para teste
 
 if dia_anterior <= 31 and mes_anterior == 5:
     dias_totais += mes6 + mes7 + mes8 + mes9 + mes10 + mes11 + mes12
@@ -86,13 +83,13 @@ if dia_anterior <= 30 and mes_anterior == 11:
 if dia_anterior <= 31 and mes_anterior == 12:
     dias_totais += 0
 
-#laço que adiciona os dias de cada ano passado até 1 ano anterior ao de hoje e variavel contadora para o laço
+#variavel contadora 
 anterior = ano_anterior + 1
 
+#laço que adiciona os dias de cada ano passado até 1 ano anterior ao atual
 while anterior < ano:
     if anterior % 400 == 0 or anterior % 4 == 0 and anterior % 100 != 0:
         dias_totais += 366
-        #bisexto += 1 #???
     else:
         dias_totais += 365
     anterior += 1
@@ -105,7 +102,6 @@ else: mes2 = 28
 #condicionais que adicionam os dias do inicio do mes até data de hoje ao total de dias
 if dia <= 31 and mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12:
     dias_totais += dia
-    #print('ok4') #usado para teste
     
 if dia <= 30 and mes == 4 or mes == 6 or mes == 9 or mes == 11:
     dias_totais += dia
@@ -151,8 +147,12 @@ if dia <= 31 and mes == 12:
 
 #variaveis e condicionais usadas para descobrir quantos sabados houveram da data informada até hoje
 sabados = dias_totais // 7
-#usei duas fontes pra calcular quantos sabados havia nesse periodo( https://clubedospoupadores.com/calculadora-dias-uteis e um codigo usando a livraria datetime que o chatGPT me deu) as duas me deram resultados diferentes, o site me deu 2956,5 e o codigo deu 2957
-# essa parte a seguir era minha tentativa de corrigir o calculo, eu fiz o teste com o codigo do GPT em um sabado e meu calculo dava 1 a menos 
+#usei duas fontes pra calcular quantos sabados havia nesse periodo( https://clubedospoupadores.com/calculadora-dias-uteis ) 
+# -e um codigo usando a livraria datetime que o chatGPT me deu) as duas me deram resultados diferentes, o site me deu- 
+# -2956,5 e o codigo deu 2957
+
+# essa parte a seguir era minha tentativa de corrigir o calculo, eu fiz o teste com o codigo do GPT em um sabado e-
+#-meu calculo dava 1 a menos 
 '''
 resto = dias_totais % 7
 if resto == 0:
@@ -162,40 +162,3 @@ if resto == 0:
 #funções que mostra o resultado do calculo
 print("Houveram ", dias_totais, " dias desde ", dia_anterior, "-", mes_anterior,"-",  ano_anterior, "até hoje")
 print("Houveram ", sabados, " sabados desde ", dia_anterior, "-", mes_anterior,"-",  ano_anterior, "até hoje")
-
-### Usei para verificar se o resultado estava correto, fi de madrugada e o chatGPT não estava fazendo "calculos complexos" segundo o mesmo
-## codigo para verificar os dias
-'''
-from datetime import datetime
-# Data inicial e final
-data_inicial = datetime(1968, 4, 27)
-data_final = datetime.now()
-
-# Cálculo da diferença em dias
-diferenca = data_final - data_inicial
-diferenca_dias = diferenca.days
-print(diferenca_dias)
-
-from datetime import datetime, timedelta
-
-# Defina as datas de início e fim
-data_inicial = datetime(1968, 4, 27)
-data_final = datetime.now()
-
-
-## codigo para verificar os sabados
-
-# Função para contar os sábados
-def contar_sabados(data_inicial, data_final):
-    count = 0
-    # Loop para iterar por todas as datas entre data_inicial e data_final
-    while data_inicial <= data_final:
-        if data_inicial.weekday() == 5:  # 5 é sábado em Python (0=segunda, 1=terça, ..., 5=sábado)
-            count += 1
-        data_inicial += timedelta(days=1)
-    return count
-
-# Chamar a função
-quantos_sabados = contar_sabados(data_inicial, data_final)
-print(f"Quantidade de sábados: {quantos_sabados}")
-'''

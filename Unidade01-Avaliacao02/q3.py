@@ -14,7 +14,7 @@ pares_primos = ""
 
 #laço que descobre os pares impares primos seguidos 
 while num <= 100000:
-    #variaveis e laço que verifica se o numero é primo
+    #variaveis e condicional que verifica se o numero é primo
     div = 2
     ndiv = 0
     primo = False
@@ -26,7 +26,7 @@ while num <= 100000:
         if ndiv == 0:
             primo = True
         
-    #variaveis, condicionais e laço para verificar se o impar seguinte do numero primo é primo
+    #variaveis, condicionais para verificar se o impar seguinte do numero primo é primo
     div = 2
     ndiv = 0
     if primo:
